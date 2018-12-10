@@ -13,4 +13,10 @@ public func routes(_ router: Router) throws {
             "name": req.parameters.next(String.self)
         ])
     }
+    
+    router.get("todos") { req -> Future<View> in
+        return try req.view().render("hello", [
+            "name": "todo"
+        ])
+    }
 }
