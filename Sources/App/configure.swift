@@ -22,12 +22,15 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(middlewares)
     
     try services.register(FluentSQLiteProvider())
-    let db = try SQLiteDatabase(storage: .file(path: "db.sqlite"))
+    let db = try SQLiteDatabase()
     var dbconfig = DatabasesConfig()
+    dbconfig.enableLogging(on: .sqlite)
     dbconfig.add(database: db, as: .sqlite)
     services.register(dbconfig)
     
     var migrations = MigrationConfig()
     migrations.add(model: Todo.self, database: .sqlite)
     services.register(migrations)
+    
+    services.register(PrintLogger(), as: Logger.self)
 }

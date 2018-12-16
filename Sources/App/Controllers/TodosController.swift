@@ -9,7 +9,13 @@ import Vapor
 
 final class TodosController {
     func index(_ req: Request) throws -> EventLoopFuture<View> {
-        let todos = [Todo(name: "a", priority: 1), Todo(name: "b", priority: 1), Todo(name: "c", priority: 1)]
-        return try req.view().render("Todos/index", ["todos": todos])
+        return try req.view().render("Todos/index", ["todos": Todo.query(on: req).all()])
+    }
+    
+    func create(_ req: Request) throws -> EventLoopFuture<Response> {
+        return try req.content.decode(Todo.self).map(to: Response.self, { todo in
+            Todo.query(on: req).create(todo)
+            return req.redirect(to: "/", type: .normal)
+        })
     }
 }

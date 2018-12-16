@@ -11,7 +11,7 @@ import Vapor
 final class Todo: SQLiteModel {
     var id: Int?
     var name: String
-    var priority: Int
+    var priority: Int?
     
     init(id: Int? = nil, name: String, priority: Int) {
         self.id = id

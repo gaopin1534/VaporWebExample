@@ -1,0 +1,19 @@
+#set("title") { Add Todo }
+
+#set("body") {
+<div class="container">
+    <div class="page-header">
+        <h1>Add Todo</h1>
+    </div>
+    <form action="/todos" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">What you have to do?</label>
+            <input type="text" class="form-control" name="name" placeholder="input a todo">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+}
+
+#embed("base")
+
