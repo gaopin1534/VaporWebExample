@@ -1,0 +1,17 @@
+#set("title") { Todos }
+
+#set("body") {
+
+<div class="container">
+    <div class="page-header">
+        <h1>Todos</h1>
+    </div>
+    <ul class="list-group">
+        #for(todo in todos) {
+        <li class="list-group-item">#(todo.id): #(todo.name)</li>
+        }
+    </ul>
+</div>
+}
+
+#embed("base")
