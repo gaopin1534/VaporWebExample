@@ -11,6 +11,11 @@
         <li class="list-group-item">#(todo.id): #(todo.name)</li>
         }
     </ul>
+    <div class="pull-right">
+        <a href="/todos/new">
+            <button type="button" class="btn btn-primary btn-lg">Add Todo</button>
+        </a>
+    </div>
 </div>
 }
 
