@@ -18,4 +18,11 @@ final class TodosController {
             return req.redirect(to: "/", type: .normal)
         })
     }
+    
+    func destroy(_ req: Request) throws -> EventLoopFuture<Response> {
+        return try Todo.find(req.parameters.next(Int.self), on: req).map(to: Response.self) { todo in
+            todo?.delete(on: req)
+             return req.redirect(to: "/", type: .normal)
+        }
+    }
 }

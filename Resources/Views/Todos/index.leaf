@@ -8,7 +8,12 @@
     </div>
     <ul class="list-group">
         #for(todo in todos) {
-        <li class="list-group-item">#(todo.id): #(todo.name)</li>
+        <li class="list-group-item">
+            <a data-method="delete" href="/todo/#(todo.id)/delete">
+                <button type="button" class="btn btn-danger">DELETE</button>
+            </a>
+            #(todo.id): #(todo.name)
+        </li>
         }
     </ul>
     <div class="pull-right">
